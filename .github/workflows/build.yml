@@ -15,6 +15,10 @@ jobs:
       - name: Unzip project
         run: unzip -o FreeTimeAgenda_Mobile_Pack.zip -d extracted
 
+      - name: Fix invalid XML comment in colors.xml
+        run: |
+          sed -i 's/(--paper #14171D)/(paper #14171D)/' extracted/FreeTimeAgenda-APK/app/src/main/res/values/colors.xml
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
